@@ -5,7 +5,7 @@ describe ActiveForce::SObject do
   let(:client) { double 'Client' }
 
   before do
-    ActiveForce.sfdc_client = client
+    ActiveForce.client = client
   end
 
   describe ".new" do
@@ -258,13 +258,13 @@ describe ActiveForce::SObject do
 
   describe '#reload' do
     let(:client) do
-      double("sfdc_client", query: [Restforce::Mash.new(Id: 1, Name: 'Jeff')])
+      double("client", query: [Restforce::Mash.new(Id: 1, Name: 'Jeff')])
     end
     let(:quota){ Quota.new(id: '1') }
     let(:territory){ Territory.new(id: '1', quota_id: '1') }
 
     before do
-      ActiveForce.sfdc_client = client
+      ActiveForce.client = client
     end
 
     it 'clears cached associations' do

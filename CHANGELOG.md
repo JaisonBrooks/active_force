@@ -1,10 +1,12 @@
 # Changelog
 
-## Not released
+## 0.8.0
+* Changed sfdc_client to client
+* Updated restforce(2.4) and active_attr(0.9)
 
 ## 0.7.1
 
-* Allow sfdc_client to be set. ([#92][])
+* Allow client to be set. ([#92][])
 
 ## 0.7.0
 

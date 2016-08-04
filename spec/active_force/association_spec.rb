@@ -10,11 +10,11 @@ describe ActiveForce::SObject do
   end
 
   let :client do
-    double("sfdc_client", query: [Restforce::Mash.new("Id" => 1)])
+    double("client", query: [Restforce::Mash.new("Id" => 1)])
   end
 
   before do
-    ActiveForce.sfdc_client = client
+    ActiveForce.client = client
   end
 
   describe "has_many_query" do

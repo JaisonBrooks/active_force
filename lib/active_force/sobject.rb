@@ -10,8 +10,7 @@ require 'logger'
 require 'restforce'
 
 module ActiveForce
-  class RecordInvalid < StandardError;end
-
+  class RecordInvalid < StandardError; end
   class SObject
     include ActiveAttr::Model
     include ActiveAttr::Dirty
@@ -19,7 +18,6 @@ module ActiveForce
     extend ActiveModel::Callbacks
 
     define_model_callbacks :save, :create, :update
-
     class_attribute :mappings, :table_name
 
     class << self
@@ -28,7 +26,6 @@ module ActiveForce
       def_delegators :mapping, :table, :table_name, :custom_table?, :mappings
 
       private
-
       ###
       # Provide each subclass with a default id field. Can be overridden
       # in the subclass if needed
@@ -64,7 +61,7 @@ module ActiveForce
       validate!
       run_callbacks :save do
         run_callbacks :update do
-          sfdc_client.update! table_name, attributes_for_sfdb
+          client.update! table_name, attributes_for_sfdb
           changed_attributes.clear
         end
       end
@@ -85,7 +82,7 @@ module ActiveForce
       validate!
       run_callbacks :save do
         run_callbacks :create do
-          self.id = sfdc_client.create! table_name, attributes_for_sfdb
+          self.id = client.create! table_name, attributes_for_sfdb
           changed_attributes.clear
         end
       end
@@ -100,7 +97,7 @@ module ActiveForce
     end
 
     def destroy
-      sfdc_client.destroy! self.class.table_name, id
+      client.destroy! self.class.table_name, id
     end
 
     def self.create args
@@ -192,18 +189,18 @@ module ActiveForce
     end
 
     def self.picklist field
-      picks = sfdc_client.picklist_values(table_name, mappings[field])
+      picks = client.picklist_values(table_name, mappings[field])
       picks.map do |value|
         [value[:label], value[:value]]
       end
     end
 
-    def self.sfdc_client
-      ActiveForce.sfdc_client
+    def self.client
+      ActiveForce.client
     end
 
-    def sfdc_client
-      self.class.sfdc_client
+    def client
+      self.class.client
     end
   end
 

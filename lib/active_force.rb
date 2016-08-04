@@ -5,9 +5,9 @@ require 'active_force/query'
 module ActiveForce
 
   class << self
-    attr_accessor :sfdc_client
+    attr_accessor :client
   end
 
-  self.sfdc_client = Restforce.new
+  self.client = Restforce.new
 
 end

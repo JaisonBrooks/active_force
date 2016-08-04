@@ -5,7 +5,7 @@ module ActiveForce
     let(:client){ double "client" }
 
     before do
-      ActiveForce.sfdc_client = client
+      ActiveForce.client = client
     end
 
     describe '.includes' do

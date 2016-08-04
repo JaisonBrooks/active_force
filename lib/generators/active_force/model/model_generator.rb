@@ -22,7 +22,7 @@ module ActiveForce
     end
 
     def sfdc_columns
-      @columns ||= ActiveForce::SObject.sfdc_client.describe(@table_name).fields.map do |field|
+      @columns ||= ActiveForce::SObject.client.describe(@table_name).fields.map do |field|
         field.name
       end
     end

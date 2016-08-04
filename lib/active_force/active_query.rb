@@ -8,7 +8,7 @@ module ActiveForce
 
     attr_reader :sobject
 
-    def_delegators :sobject, :sfdc_client, :build, :table_name, :mappings
+    def_delegators :sobject, :client, :build, :table_name, :mappings
     def_delegators :to_a, :each, :map, :inspect
 
     def initialize sobject
@@ -25,7 +25,7 @@ module ActiveForce
 
     def count
       super
-      sfdc_client.query(to_s).first.expr0
+      client.query(to_s).first.expr0
     end
 
     def limit limit
@@ -149,7 +149,7 @@ module ActiveForce
     end
 
     def result
-      sfdc_client.query(self.to_s)
+      client.query(self.to_s)
     end
   end
 end

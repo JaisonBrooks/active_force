@@ -13,7 +13,7 @@ describe ActiveForce::ActiveQuery do
   let(:active_query){ ActiveForce::ActiveQuery.new(sobject) }
 
   before do
-    allow(active_query).to receive(:sfdc_client).and_return client
+    allow(active_query).to receive(:client).and_return client
     allow(active_query).to receive(:build).and_return Object.new
   end
 
