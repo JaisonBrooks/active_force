@@ -8,7 +8,7 @@
 
 # ActiveForce
 
-A ruby gem to interact with [SalesForce][1] as if it were Active Record. It
+A ruby gem to interact with [Salesforce][1] as if it were Active Record. It
 uses [Restforce][2] to interact with the API, so it is fast and stable.
 
 ## Installation
@@ -101,7 +101,7 @@ end
 
 Altenative you can try the generator. (requires setting up the connection)
 
-    rails generate active_force_model Medication__c
+    rails generate active_force:model Medication__c
 
 ### Associations
 
